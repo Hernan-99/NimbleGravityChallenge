@@ -12,7 +12,7 @@ export const PositionList = ({ candidate }: JobLProps) => {
   if (loading) return <p>Cargando empleos...</p>;
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 p-2 md:p-8 lg:p-14">
       {position.map((position) => (
         <PositionItem
           key={position.id}

@@ -35,10 +35,11 @@ export const PositionItem = ({ position, candidate }: PositionIProps) => {
     }
   };
   return (
-    <div style={{ border: "1px solid #ccc", padding: 16, marginBottom: 16 }}>
-      <h3>{position.title}</h3>
+    <div className="bg-white rounded-xl shadow-md p-6 flex flex-col gap-4">
+      <h3 className="text-lg font-semibold">{position.title}</h3>
 
       <input
+        className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         type="text"
         placeholder="Ingresar url del repositorio"
         value={repoUrl}
@@ -46,13 +47,17 @@ export const PositionItem = ({ position, candidate }: PositionIProps) => {
         style={{ width: "100%", marginBottom: 8 }}
       />
 
-      <button onClick={handleSubmit} disabled={loading || !repoUrl}>
+      <button
+        className="bg-blue-600 text-white rounded-lg py-2 hover:bg-blue-700 transition disabled:opacity-50"
+        onClick={handleSubmit}
+        disabled={loading || !repoUrl}
+      >
         {loading ? "Enviando..." : "Enviar"}
       </button>
 
-      {success && <p style={{ color: "green" }}>Aplicacion exitosa!</p>}
+      {success && <p className="text-green-600 text-sm">Aplicacion exitosa!</p>}
 
-      {error && <p style={{ color: "green" }}>{error}</p>}
+      {error && <p className="text-red-600 text-sm">{error}</p>}
     </div>
   );
 };
