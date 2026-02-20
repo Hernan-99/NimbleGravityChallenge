@@ -15,7 +15,7 @@ function App() {
         Bienvenido {candidate.firstName} {candidate.lastName}, esta es nuestra
         lista de empleos disponibles
       </h1>
-      <PositionList />
+      <PositionList candidate={candidate} />
     </div>
   );
 }
