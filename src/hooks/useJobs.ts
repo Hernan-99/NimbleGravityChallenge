@@ -12,9 +12,12 @@ export const usePositionJobs = () => {
       try {
         const data = await getListJobs();
         setPosition(data);
-      } catch (err: any) {
-        console.log(err);
-        setError("Error al obtener la lista de empleos");
+      } catch (err: unknown) {
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Error al obtener la lista de empleos",
+        );
       } finally {
         setLoading(false);
       }

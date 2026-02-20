@@ -12,9 +12,12 @@ export const useCandidate = (email: string) => {
       try {
         const data = await getCandidateByEmail(email);
         setCandidate(data);
-      } catch (err: any) {
-        console.log(err);
-        setError("Error al obtener los datos del candidato");
+      } catch (err: unknown) {
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Error al obtener los datos del candidato",
+        );
       } finally {
         setLoading(false);
       }
