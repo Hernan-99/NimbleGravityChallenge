@@ -13,6 +13,7 @@ export const getCandidateByEmail = async (
 export const applyJob = async (payload: {
   uuid: string;
   candidateId: string;
+  applicationId: string;
   jobId: string;
   repoUrl: string;
 }) => {
