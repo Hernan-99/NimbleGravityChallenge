@@ -23,6 +23,7 @@ export const PositionItem = ({ position, candidate }: PositionIProps) => {
       await applyJob({
         uuid: candidate.uuid,
         candidateId: candidate.candidateId,
+        applicationId: candidate.applicationId,
         jobId: position.id,
         repoUrl,
       });
