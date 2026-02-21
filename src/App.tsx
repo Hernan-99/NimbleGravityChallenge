@@ -4,7 +4,9 @@ import { Title } from "./components/ui/Title";
 import { useCandidate } from "./hooks/useCandidate";
 
 function App() {
-  const email = import.meta.env.VITE_EMAIL; // hernan24744@gmail.com
+  // al ser datos "sensibles" podria dejarlo con el .env pero lo cambio hardcodeo por las dudas que la prueba lo necesite asi
+  // const email = import.meta.env.VITE_EMAIL; // hernan24744@gmail.com
+  const email = "hernan24744@gmail.com";
   const { candidate, loading, error } = useCandidate(email);
 
   if (loading) return <p>Cargando candidato...</p>;
