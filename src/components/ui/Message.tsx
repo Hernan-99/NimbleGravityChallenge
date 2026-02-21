@@ -13,7 +13,17 @@ export const Message = ({
   error,
   children,
 }: MessageProps) => {
-  if (loading) return <p>{loadingText}</p>;
-  if (loading) return <p style={{ color: "red" }}>{error}</p>;
+  if (loading)
+    return (
+      <div className="w-full flex justify-center mt-10">
+        <p className="text-gray-500">{loadingText}</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="w-full flex justify-center mt-10">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
   return <>{children}</>;
 };
