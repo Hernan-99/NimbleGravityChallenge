@@ -9,11 +9,8 @@ function App() {
   const email = "hernan24744@gmail.com";
   const { candidate, loading, error } = useCandidate(email);
 
-  if (loading) return <p>Cargando candidato...</p>;
-  if (!candidate) return <p>Error al cargar datos del candidato</p>;
-
   return (
-    <div style={{ maxWidth: 1900, margin: "40px auto" }}>
+    <div className="mx-auto px-6 py-10">
       <Message loading={loading} error={error} loadingText="Cargando...">
         {candidate && (
           <>
