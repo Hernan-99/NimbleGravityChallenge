@@ -2,6 +2,92 @@
 
 Challenge desarrollado con React, TypeScript y Vite para Nimble Gravity.
 
+# Explicacion del bug con el que me encontre y como lo solucione
+
+Durante la implementación al hacer el post al endpoint para aplicar, recibía el siguiente error:
+
+```json
+{
+  "error": "Invalid body",
+  "details": {
+    "fieldErrors": {
+      "applicationId": ["applicationId is required"]
+    }
+  }
+}
+```
+
+El mail no mencionaba todos los campos que necesitaban ser enviados 😅 y me guie solo por eso. Yo estaba intentado enviar solamente esto:
+
+```json
+{
+  "uuid": "...",
+  "jobId": "...",
+  "candidateId": "...",
+  "repoUrl": "..."
+}
+```
+
+Desde la consola en network me decia el error:
+
+![Error](/images/err.jpg)
+
+tambien habia que agregar el campo
+
+```json
+{ "applicationId": "..." }
+```
+
+Quedando asi:
+
+```json
+{
+  "uuid": "...",
+  "jobId": "...",
+  "applicationId": "...",
+  "candidateId": "...",
+  "repoUrl": "..."
+}
+```
+
+## Solución aplicada
+
+Actualice el payload en el service:
+
+```js
+export const applyJob = async (payload: {
+  uuid: string;
+  candidateId: string;
+  applicationId: string;
+  jobId: string;
+  repoUrl: string;
+}) => {...};
+
+```
+
+Tambien actualice la llamada de applyJob en el metodo de envio de aplicacion dentro del componente PositionItem>
+
+```js
+export const handleSubmit = async () => {
+    ...
+
+    await applyJob({
+        uuid: candidate.uuid,
+        candidateId: candidate.candidateId,
+        applicationId: candidate.applicationId,
+        jobId: position.id,
+        repoUrl,
+      });
+
+    ...
+}
+```
+
+Despues de esto, la app funciono y respondio un status 200
+![Success](/images/success.jpg)
+
+---
+
 ## Manejo de control de versiones
 
 Use una estructura basica de control de versiones con dos ramas principales:
