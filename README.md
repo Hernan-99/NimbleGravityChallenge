@@ -2,6 +2,13 @@
 
 Challenge desarrollado con React, TypeScript y Vite para Nimble Gravity.
 
+## Manejo de control de versiones
+
+Use una estructura basica de control de versiones con dos ramas principales:
+
+- main, rama con el codigo finalizado y probado.
+- develop, rama de desarrollo donde fui implementando las funcionalidades y mejoras antes de hacer un merge con la rama main.
+
 ## Tecnologías utilizadas
 
 - React 18
