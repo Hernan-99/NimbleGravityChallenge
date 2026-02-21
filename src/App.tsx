@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="mx-auto px-6 py-10">
-      <Message loading={loading} error={error} loadingText="Cargando...">
+      <Message loading={loading} error={error} loadingText="Cargando datos...">
         {candidate && (
           <>
             <Title
